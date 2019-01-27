@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8079882996010902589
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6430117184582071236, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_Name
+      value: Dad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.525
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428771611969152454, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371354884114916518, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 8c40f346d683a9548a5a09256cc1992e,
+        type: 2}
+    - target: {fileID: 6614101645714886196, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: e326c491245322e458be81808c1f5ab3,
+        type: 3}
+    - target: {fileID: 6389572501349644600, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: TurningSpeed
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389572501349644600, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: MaxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389572501349644600, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: topSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389618216389093796, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+        type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 3002505133940508289}
+    - target: {fileID: 1954621652, guid: 9707cdeabdc2f1d4e87f0125e64a500e, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 3002505133940508289}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9707cdeabdc2f1d4e87f0125e64a500e, type: 3}
+--- !u!50 &3002505133940508289 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6452119243734213308, guid: 9707cdeabdc2f1d4e87f0125e64a500e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8079882996010902589}
+  m_PrefabAsset: {fileID: 0}

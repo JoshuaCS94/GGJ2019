@@ -262,13 +262,6 @@ MonoBehaviour:
   CanSlideOver:
     serializedVersion: 2
     m_Bits: 256
-  BottomWallCheckTransformL: {fileID: 6428745834385211654}
-  BottomWallCheckTransformR: {fileID: 6428868748288311402}
-  BottomWallCheckArea: {x: 0.05, y: 0.3}
-  WallSlideDescendingSpeed: -1.5
-  WallSlideVerticalForce: 350
-  WallSlideRepulsionForce: 450
-  WallSlideAirTime: 0.25
   FullWallCheckTransformL: {fileID: 6428487950405587194}
   FullWallCheckTransformR: {fileID: 6424474348393557438}
   FullWallCheckArea: {x: 0.05, y: 0.6}
@@ -442,7 +435,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1000
+  m_Intensity: 50
   m_Range: 4
   m_SpotAngle: 30
   m_CookieSize: 10

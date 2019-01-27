@@ -19,16 +19,16 @@ namespace UnityStandardAssets._2D
         [SerializeField] private LayerMask CanStandOver; // A mask determining what is ground to the character
         [SerializeField] private LayerMask CanSlideOver;
 
-        [Header("Wall Slide Settings")]
-        public Transform BottomWallCheckTransformL; // A position marking where to check if the player is wallSliding.
-
-        public Transform BottomWallCheckTransformR; // A position marking where to check if the player is wallSliding.
-        public Vector2 BottomWallCheckArea = new Vector2(0.05f, 0.1f);
-        public float WallSlideDescendingSpeed = -1.5f;
-        [Range(100, 800)] public float WallSlideVerticalForce = 400;
-        [Range(100, 800)] public float WallSlideRepulsionForce = 500;
-
-        [Range(0.1f, 1)] public float WallSlideAirTime = 0.25f;
+//        [Header("Wall Slide Settings")]
+//        public Transform BottomWallCheckTransformL; // A position marking where to check if the player is wallSliding.
+//
+//        public Transform BottomWallCheckTransformR; // A position marking where to check if the player is wallSliding.
+//        public Vector2 BottomWallCheckArea = new Vector2(0.05f, 0.1f);
+//        public float WallSlideDescendingSpeed = -1.5f;
+//        [Range(100, 800)] public float WallSlideVerticalForce = 400;
+//        [Range(100, 800)] public float WallSlideRepulsionForce = 500;
+//
+//        [Range(0.1f, 1)] public float WallSlideAirTime = 0.25f;
 
 
         [Header("Wall Slide Cohesion Settings")] // Used to stop generating imposible forces
@@ -84,8 +84,8 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
             GroundCheckTransform = transform.Find("GroundCheck");
-            BottomWallCheckTransformL = transform.Find("BottomWallCheckL");
-            BottomWallCheckTransformR = transform.Find("BottomWallCheckR");
+//            BottomWallCheckTransformL = transform.Find("BottomWallCheckL");
+//            BottomWallCheckTransformR = transform.Find("BottomWallCheckR");
             FullWallCheckTransformL = transform.Find("FullWallCheckL");
             FullWallCheckTransformR = transform.Find("FullWallCheckR");
             body = GetComponent<Rigidbody2D>();
@@ -99,8 +99,8 @@ namespace UnityStandardAssets._2D
         private void UpdateSemistates()
         {
             semistate_grounded = Collide(GroundCheckTransform, groundCheckArea, CanStandOver);
-            semistate_bottomWallCheckL = Collide(BottomWallCheckTransformL, BottomWallCheckArea, CanSlideOver);
-            semistate_bottomWallCheckR = Collide(BottomWallCheckTransformR, BottomWallCheckArea, CanSlideOver);
+//            semistate_bottomWallCheckL = Collide(BottomWallCheckTransformL, BottomWallCheckArea, CanSlideOver);
+//            semistate_bottomWallCheckR = Collide(BottomWallCheckTransformR, BottomWallCheckArea, CanSlideOver);
             semistate_fullWallCheckL = Collide(FullWallCheckTransformL, FullWallCheckArea, CanSlideOver);
             semistate_fullWallCheckR = Collide(FullWallCheckTransformR, FullWallCheckArea, CanSlideOver);
         }
@@ -118,18 +118,18 @@ namespace UnityStandardAssets._2D
             {
                 actualDirection += TurningSpeed * direction;
                 actualDirection = Mathf.Clamp(actualDirection, -1, 1);
-                anim.SetFloat("turningOffset", actualDirection);
+//                anim.SetFloat("turningOffset", actualDirection);
             }
             else if (pending_Flip)
             {
                 anim.GetComponent<SpriteRenderer>().flipX = !facingRight;
-                anim.SetBool("turning", false);
+//                anim.SetBool("turning", false);
             }
-            if (pendingAirControl && Time.time > airControlTime + WallSlideAirTime)
-            {
-                pendingAirControl = false;
-                AirControl = true;
-            }
+//            if (pendingAirControl && Time.time > airControlTime + WallSlideAirTime)
+//            {
+//                pendingAirControl = false;
+//                AirControl = true;
+//            }
             if (pendingOffsetDirectionChange && Time.time > offsetDirectionCountDown + offsetDirectionTime)
             {
                 offsetDirection = direction;
@@ -216,14 +216,14 @@ namespace UnityStandardAssets._2D
 //                        anim.SetTrigger("wallJump");
 //                    }
                 }
-                if (AirControl && !semistate_grounded && wallSliding)
-                {
-                    body.velocity = new Vector2(0, WallSlideDescendingSpeed);
-                    anim.SetBool("wallSlide", true);
-                    ForceDirection(wallR ? true : false);
-                }
-                else
-                    anim.SetBool("wallSlide", false);
+//                if (AirControl && !semistate_grounded && wallSliding)
+//                {
+//                    body.velocity = new Vector2(0, WallSlideDescendingSpeed);
+//                    anim.SetBool("wallSlide", true);
+//                    ForceDirection(wallR ? true : false);
+//                }
+//                else
+//                    anim.SetBool("wallSlide", false);
 
                 //clampSpeed
                 var vel = body.velocity;
@@ -246,8 +246,8 @@ namespace UnityStandardAssets._2D
             pending_Flip = false;
             pendingOffsetDirectionChange = false;
             anim.GetComponent<SpriteRenderer>().flipX = !facingR;
-            anim.SetBool("turning", false);
-            anim.SetFloat("turningOffset", direction);
+//            anim.SetBool("turning", false);
+//            anim.SetFloat("turningOffset", direction);
         }
 
         private void Flip()
@@ -258,8 +258,8 @@ namespace UnityStandardAssets._2D
             pending_Flip = true;
 
             anim.GetComponent<SpriteRenderer>().flipX = false;
-            anim.SetBool("turning", true);
-            anim.SetFloat("turningOffset", direction);
+//            anim.SetBool("turning", true);
+//            anim.SetFloat("turningOffset", direction);
 
             offsetDirectionTime = Time.time;
             pendingOffsetDirectionChange = true;
@@ -271,8 +271,8 @@ namespace UnityStandardAssets._2D
             //groundCheck
             Gizmos.DrawWireCube(GroundCheckTransform.position, groundCheckArea);
             //floor wallCheck
-            Gizmos.DrawWireCube(BottomWallCheckTransformL.position, BottomWallCheckArea);
-            Gizmos.DrawWireCube(BottomWallCheckTransformR.position, BottomWallCheckArea);
+//            Gizmos.DrawWireCube(BottomWallCheckTransformL.position, BottomWallCheckArea);
+//            Gizmos.DrawWireCube(BottomWallCheckTransformR.position, BottomWallCheckArea);
             //total wallCheck
             Gizmos.color = Color.green;
             Gizmos.DrawWireCube(FullWallCheckTransformL.position, FullWallCheckArea);
