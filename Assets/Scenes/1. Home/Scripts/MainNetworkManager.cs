@@ -17,19 +17,17 @@ public class MainNetworkManager : NetworkManager
 
     private int m_currentPrefabId = 0;
 
-    public GameManager_Server gameManager;
+    private GameManager_Server gameManager;
+    
+    public Transform playerSelector;
+    public Transform[] selectors;
 
     // Methods
-
-    public override void OnServerSceneChanged(string sceneName)
-    {
-        SceneManager.LoadScene("Main", LoadSceneMode.Single);
-    }
 
     public override void OnClientSceneChanged(NetworkConnection conn)
     {
         #if UNITY_STANDALONE
-        SceneManager.LoadScene("Client - Android", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Client - Desktop", LoadSceneMode.Additive);
         #elif UNITY_ANDROID
 		SceneManager.LoadScene("Client - Android", LoadSceneMode.Additive);
 		#endif
@@ -131,5 +129,11 @@ public class MainNetworkManager : NetworkManager
     public void ChangePort(string port)
     {
         networkPort = int.Parse(port);
+    }
+
+    public void SelectPlayer(int i)
+    {
+        playerSelector.position = selectors[i].position;
+        m_currentPrefabId = i;
     }
 }
