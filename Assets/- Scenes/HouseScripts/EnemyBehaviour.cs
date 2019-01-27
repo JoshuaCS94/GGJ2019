@@ -8,7 +8,7 @@ using Random = System.Random;
 public class EnemyBehaviour : MonoBehaviour
 {
 
-    public float move_factor = 3;
+    public float move_factor = 0.1f;
     public float speed = 0.1f;
     public int hit_points = 3;
     public bool all_random = false;
@@ -17,7 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public bool try_to_in = true;
     public bool inside = false;
-    public float time_to_in = 3;
+    public float time_to_in = 30;
     public float noknoking_time = 0.5f;
     
     static System.Random rnd = new System.Random();
@@ -31,20 +31,18 @@ public class EnemyBehaviour : MonoBehaviour
 
     private Tweener movement_tweener;
     public bool released = false;
-
+    public bool releasing = false;
+    
     public void ReleaseEnemy(bool dir = true)
     {
-        if (dir)
+        releasing = true;
+        direction = dir;
+        var seq = DOTween.Sequence().AppendInterval(hike_duration).AppendCallback(() =>
         {
-            movement_tweener = transform.DOMoveX(transform.position.x + move_factor*3, 2);
-        }
-        else
-        {
-            transform.DORotate(new Vector3(0, 180, 0), .1f);
-            movement_tweener = transform.DOMoveX(transform.position.x - move_factor*3, 2);
-        }
-
-        movement_tweener.OnComplete(() => { released = true; });
+            released = true;
+            releasing = false;
+        });
+        //movement_tweener.OnComplete(() => { released = true; });
     }
 
     public void ChangeDir()
@@ -61,7 +59,6 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         manager = FindObjectOfType<LevelManager>();
-        ReleaseEnemy();
         if (!all_random)
         {
             StartCoroutine("SemiRandomMovement");
@@ -71,7 +68,7 @@ public class EnemyBehaviour : MonoBehaviour
     
     
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (direction)
         {
@@ -81,10 +78,24 @@ public class EnemyBehaviour : MonoBehaviour
         {
             transform.DORotate(new Vector3(0, 180, 0), .1f);
         }
+
+        if (releasing)
+        {
+            if (direction)
+            {
+                //movement_tweener = transform.DOMoveX(transform.position.x + move_factor*2, speed);
+                GetComponent<Rigidbody2D>().AddForce(Vector2.right*speed);
+            }
+            else
+            {
+                //movement_tweener = transform.DOMoveX(transform.position.x - move_factor*2, speed);
+                GetComponent<Rigidbody2D>().AddForce(Vector2.left*speed);
+            }
+        }
         
         if (released)
         {
-            DOTween.Kill(movement_tweener.id);
+            //DOTween.Kill(movement_tweener.id);
             if (random_mov)
             {
                 var possibilities = new List<bool>() {direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, direction, !direction};
@@ -94,11 +105,14 @@ public class EnemyBehaviour : MonoBehaviour
             print(direction);
             if (direction)
             {
-                movement_tweener = transform.DOMoveX(transform.position.x + move_factor, speed);
+                //movement_tweener = transform.DOMoveX(transform.position.x + move_factor, speed);
+                GetComponent<Rigidbody2D>().AddForce(Vector2.right*speed);
             }
             else
             {
-                movement_tweener = transform.DOMoveX(transform.position.x - move_factor, speed);
+                //movement_tweener = transform.DOMoveX(transform.position.x - move_factor, speed);
+                GetComponent<Rigidbody2D>().AddForce(Vector2.left*speed);
+
             }
         }
         else
@@ -149,6 +163,9 @@ public class EnemyBehaviour : MonoBehaviour
     
     public void YouAreIn()
     {
+        if(inside)
+            return;
+        manager.enemy_count++;
         StopCoroutine(destruction);
     }
 
@@ -156,6 +173,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (inside)
         {
+            inside = false;
             manager.EnemyDead();
             Destroy(gameObject,0.1f);
         }
@@ -170,7 +188,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        StopCoroutine(noknoking);
+        door = other.GetComponent<DoorManger>();
+        if(door != null)
+            StopCoroutine(noknoking);
     }
     
     
