@@ -10,7 +10,7 @@ public class GameManager_Client : MonoBehaviour
 	// Use this for initialization
 	private void Start ()
 	{
-		m_networkManager = GameObject.Find("Network Manager").GetComponent<NetworkManager>();
+		m_networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
 
 		#if UNITY_STANDALONE
 		m_controlHandler = gameObject.AddComponent<ControlHandler_Standalone>();
@@ -27,28 +27,24 @@ public class GameManager_Client : MonoBehaviour
 
 	private void ManageInput()
 	{
-		var m = m_controlHandler.Movement;
-
-		if (!Mathf.Approximately(m.x, 0) || !Mathf.Approximately(m.y, 0))
-			SendMovement(m.x, m.y);
+		if (!Mathf.Approximately(m_controlHandler.Movement, 0))
+			SendMovement(m_controlHandler.Movement);
 		else
 			SendFinishedMovement();
 
-		var b = m_controlHandler.Special;
-
-		if (b != KeyCode.None)
+		if (m_controlHandler.Special)
 			SendSpecial();
 	}
 
-	private void SendMovement(float x, float y)
+	private void SendMovement(float x)
 	{
 		m_networkManager.client.Send((short) GameMsgType.Movement,
-			new MovementMessage {delta = new Vector2(x, y)});
+			new MovementMessage {delta = x});
 	}
 
 	private void SendFinishedMovement()
 	{
-		m_networkManager.client.Send((short) GameMsgType.FinishedMovement,
+		m_networkManager.client.Send((short ) GameMsgType.FinishedMovement,
 			new EmptyMessage());
 	}
 

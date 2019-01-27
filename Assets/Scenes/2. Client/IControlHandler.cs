@@ -2,6 +2,6 @@
 
 public interface IControlHandler
 {
-    Vector2 Movement { get; set; }
-    KeyCode Special { get; set; }
+    float Movement { get; set; }
+    bool Special { get; set; }
 }

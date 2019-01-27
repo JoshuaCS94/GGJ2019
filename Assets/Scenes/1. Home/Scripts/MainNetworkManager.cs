@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 
 public class PlayerCreationMsg : MessageBase
@@ -15,13 +17,14 @@ public class MainNetworkManager : NetworkManager
 
     private int m_currentPrefabId = 0;
 
+    public GameManager_Server gameManager;
+
     // Methods
 
     public override void OnServerSceneChanged(string sceneName)
     {
-        Console.WriteLine("Tamos");
+        Debug.Log("Tamos");
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
-//
 //        SceneManager.LoadScene("Battlefield 1", LoadSceneMode.Additive);
     }
 
@@ -49,36 +52,40 @@ public class MainNetworkManager : NetworkManager
         {
             prefabId = m_currentPrefabId
         });
+        Debug.Log("Tamos aqui!!");
     }
 
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId,
         NetworkReader extraMessageReader)
     {
-        if (!playerPrefab)
-        {
-            if (!LogFilter.logError)
-                return;
-            Debug.LogError("The PlayerPrefab is empty on the NetworkManager. Please setup a PlayerPrefab object.");
-        }
-        else if (!playerPrefab.GetComponent<NetworkIdentity>())
-        {
-            if (!LogFilter.logError)
-                return;
-            Debug.LogError("The PlayerPrefab does not have a NetworkIdentity. Please add a NetworkIdentity to the player prefab.");
-        }
-        else if (playerControllerId < conn.playerControllers.Count &&
-                 conn.playerControllers[playerControllerId].IsValid &&
-                 conn.playerControllers[playerControllerId].gameObject != null)
-        {
-            if (!LogFilter.logError)
-                return;
-            Debug.LogError("There is already a player at that playerControllerId for this connections.");
-        }
-        else
-        {
+//        if (!playerPrefab)
+//        {
+//            if (!LogFilter.logError)
+//                return;
+//            Debug.LogError("The PlayerPrefab is empty on the NetworkManager. Please setup a PlayerPrefab object.");
+//        }
+//        else if (!playerPrefab.GetComponent<NetworkIdentity>())
+//        {
+//            if (!LogFilter.logError)
+//                return;
+//            Debug.LogError("The PlayerPrefab does not have a NetworkIdentity. Please add a NetworkIdentity to the player prefab.");
+//        }
+//        else if (playerControllerId < conn.playerControllers.Count &&
+//                 conn.playerControllers[playerControllerId].IsValid &&
+//                 conn.playerControllers[playerControllerId].gameObject != null)
+//        {
+//            if (!LogFilter.logError)
+//                return;
+//            Debug.LogError("There is already a player at that playerControllerId for this connections.");
+//        }
+//        else
+//        {
 //            var startPosition = GetStartPosition();
-//            var playerMsg = extraMessageReader.ReadMessage<PlayerCreationMsg>();
-//
+        var playerMsg = extraMessageReader.ReadMessage<PlayerCreationMsg>();
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager_Server>();
+        
+        NetworkServer.AddPlayerForConnection(conn, gameManager.AddPlayer(playerMsg.prefabId), playerControllerId);
 //            var player = startPosition
 //                ? Instantiate(playerPrefab, startPosition.position, startPosition.rotation)
 //                : Instantiate(playerPrefab, playerPrefab.transform.position, Quaternion.identity);
@@ -103,7 +110,6 @@ public class MainNetworkManager : NetworkManager
 //            (m_currentTeam % 2 == 0 ? team1 : team2).AddPlayer(player);
 //
 //            m_currentTeam++;
-        }
     }
 
     public new void StartClient()

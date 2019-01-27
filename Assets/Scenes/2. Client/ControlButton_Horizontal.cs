@@ -19,23 +19,23 @@ public class ControlButton_Horizontal : MonoBehaviour, IPointerDownHandler, IPoi
 
     private void LateUpdate()
     {
-        m_controlHandler.Special = KeyCode.None;
+//        m_controlHandler.Special = KeyCode.None;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (Time.time - m_doubleTapStartTime < DRAG_THRESHOLD)
         {
-            m_controlHandler.Special = keyCode;
+//            m_controlHandler.Special = keyCode;
         }
 
-        m_controlHandler.Movement = new Vector2(value, m_controlHandler.Movement.y);
+//        m_controlHandler.Movement = new Vector2(value, m_controlHandler.Movement.y);
 
         m_doubleTapStartTime = Time.time;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        m_controlHandler.Movement = new Vector2(0, m_controlHandler.Movement.y);
+//        m_controlHandler.Movement = new Vector2(0, m_controlHandler.Movement.y);
     }
 }

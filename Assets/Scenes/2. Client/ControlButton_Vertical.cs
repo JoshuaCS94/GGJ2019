@@ -19,24 +19,24 @@ public class ControlButton_Vertical : MonoBehaviour, IPointerDownHandler, IPoint
 
     private void LateUpdate()
     {
-        m_controlHandler.Special = KeyCode.None;
+        m_controlHandler.Special = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (Time.time - m_doubleTapStartTime < DRAG_THRESHOLD)
         {
-            m_controlHandler.Special = keyCode;
+            m_controlHandler.Special = true;
         }
 
-        m_controlHandler.Movement = new Vector2(m_controlHandler.Movement.x, value);
+        m_controlHandler.Movement = m_controlHandler.Movement;
 
         m_doubleTapStartTime = Time.time;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        m_controlHandler.Movement = new Vector2(m_controlHandler.Movement.x, 0);
+        m_controlHandler.Movement = m_controlHandler.Movement;
     }
 
 }
