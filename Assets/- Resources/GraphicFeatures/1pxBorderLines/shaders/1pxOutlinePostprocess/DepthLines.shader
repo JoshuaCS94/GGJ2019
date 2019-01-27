@@ -34,7 +34,7 @@
 			{
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
-				o.uv = v.uv;
+				o.uv = v.uv;				
 				return o;
 			}
 			
@@ -64,7 +64,7 @@
                 rawDepth = tex2D(_OutlineDepthMask, uv + float2(-size.x,0));
                 if(rawDepth > linearDepth && abs(rawDepth-linearDepth)>_MinDif)
                     return tex2D(_OutlineColorMask, uv + float2(-size.x,0));
-                    
+                
                 //right
                 rawDepth = tex2D(_OutlineDepthMask, uv + float2(size.x,0));
                 if(rawDepth > linearDepth && abs(rawDepth-linearDepth)>_MinDif)
@@ -75,9 +75,7 @@
             
 			fixed4 frag (v2f i) : SV_Target
 			{
-                float pixelProportionY = _MainTex_TexelSize.y;
-//                float pixelProportionX = pixelProportionY*(_MainTex_TexelSize.x/_MainTex_TexelSize.y);
-                fixed4 col = CrossDepthTest(_MainTex,i.uv,float2(pixelProportionY,pixelProportionY));
+                fixed4 col = CrossDepthTest(_MainTex,i.uv,_MainTex_TexelSize);
 
 				return col;
 			}

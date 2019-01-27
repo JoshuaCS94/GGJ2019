@@ -12,7 +12,7 @@ public class RenderColorMask : MonoBehaviour
     void Awake()
     {
         cam = GetComponent<Camera>();
-        cam.SetReplacementShader(ColorMaskShader,TagId);
+        cam.SetReplacementShader(ColorMaskShader, TagId);
         RenderTexture tex = new RenderTexture(cam.pixelWidth, cam.pixelHeight, 16);
         tex.filterMode = FilterMode.Point;
         cam.targetTexture = tex;
