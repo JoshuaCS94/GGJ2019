@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: home-walls-mat
+  m_Name: home-door-mat
   m_Shader: {fileID: 4800000, guid: 5b47fcb216d404f4aa3da48504958aab, type: 3}
   m_ShaderKeywords: BUMP ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: bd90e3355fe3ad24d9f474702fdb410a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 76f567ae15e552a4f9f185b23f1000fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
