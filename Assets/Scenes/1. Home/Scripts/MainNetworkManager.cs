@@ -1,28 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 
 public class PlayerCreationMsg : MessageBase
 {
-    public string name;
-    public string bodyBase;
-    public string bodyCore;
-    public Color color;
+    public int prefabId;
 }
 
 
 public class MainNetworkManager : NetworkManager
 {
 
-    private int m_currentTeam = 0;
-
+    private int m_currentPrefabId = 0;
 
     // Methods
 
     public override void OnServerSceneChanged(string sceneName)
     {
-        SceneManager.LoadScene("Server", LoadSceneMode.Additive);
+        Console.WriteLine("Tamos");
+        SceneManager.LoadScene("Main", LoadSceneMode.Single);
 //
 //        SceneManager.LoadScene("Battlefield 1", LoadSceneMode.Additive);
     }
@@ -35,6 +33,11 @@ public class MainNetworkManager : NetworkManager
 //        SceneManager.LoadScene("Battlefield 1", LoadSceneMode.Additive);
     }
 
+    public void OnSelectPrefabId(int prefabId)
+    {
+        m_currentPrefabId = prefabId;
+    }
+
     public override void OnClientConnect(NetworkConnection conn)
     {
         ClientScene.Ready(conn);
@@ -44,10 +47,7 @@ public class MainNetworkManager : NetworkManager
 
         ClientScene.AddPlayer(conn, 0, new PlayerCreationMsg
         {
-//            name = lobbyManager.PlayerName,
-//            bodyBase = lobbyManager.CurrentBodyName,
-//            bodyCore = lobbyManager.CurrentCoreName,
-//            color = lobbyManager.Color
+            prefabId = m_currentPrefabId
         });
     }
 
@@ -76,14 +76,14 @@ public class MainNetworkManager : NetworkManager
         }
         else
         {
-            var startPosition = GetStartPosition();
-            var playerMsg = extraMessageReader.ReadMessage<PlayerCreationMsg>();
-
-            var player = startPosition
-                ? Instantiate(playerPrefab, startPosition.position, startPosition.rotation)
-                : Instantiate(playerPrefab, playerPrefab.transform.position, Quaternion.identity);
-
-            player.name = playerMsg.name;
+//            var startPosition = GetStartPosition();
+//            var playerMsg = extraMessageReader.ReadMessage<PlayerCreationMsg>();
+//
+//            var player = startPosition
+//                ? Instantiate(playerPrefab, startPosition.position, startPosition.rotation)
+//                : Instantiate(playerPrefab, playerPrefab.transform.position, Quaternion.identity);
+//
+//            player.name = playerMsg.name;
 
 //            var playerData = player.GetComponent<PlayerData>();
 
@@ -92,7 +92,7 @@ public class MainNetworkManager : NetworkManager
 //            playerData.BodyPath = playerMsg.bodyBase;
 //            playerData.CorePath = playerMsg.bodyCore;
 
-            NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+//            NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
 //            // Add players
 //            var gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
