@@ -14,10 +14,17 @@ public class EnemyBehaviour : MonoBehaviour
     public bool all_random = false;
     public float hike_duration = 3;
     public bool random_mov = false;
+
+    public bool try_to_in = true;
+    public bool inside = false;
+    public float time_to_in = 3;
+    public float noknoking_time = 0.5f;
     
     static System.Random rnd = new System.Random();
     LevelManager manager;
-
+    private Coroutine destruction;
+    private Coroutine noknoking;
+    private DoorManger door;
     
     [HideInInspector]
     public bool direction = false;
@@ -59,7 +66,8 @@ public class EnemyBehaviour : MonoBehaviour
         {
             StartCoroutine("SemiRandomMovement");
         }
-    }
+        destruction = StartCoroutine("Autodestruction");
+     }
     
     
     // Update is called once per frame
@@ -92,6 +100,9 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 movement_tweener = transform.DOMoveX(transform.position.x - move_factor, speed);
             }
+        }
+        else
+        {
             
         }
     }
@@ -120,4 +131,47 @@ public class EnemyBehaviour : MonoBehaviour
             yield return new WaitForSeconds(hike_duration);
         }
     }
+
+    public IEnumerator Autodestruction()
+    {
+        yield return new WaitForSeconds(time_to_in);
+        Destroy(gameObject);
+    }
+
+    public IEnumerator TryingToPass()
+    {
+        while (true)
+        {
+            door.NokNok();
+            yield return new WaitForSeconds(noknoking_time);
+        }
+    }
+    
+    public void YouAreIn()
+    {
+        StopCoroutine(destruction);
+    }
+
+    public void YouAreOut()
+    {
+        if (inside)
+        {
+            manager.EnemyDead();
+            Destroy(gameObject,0.1f);
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        door = other.GetComponent<DoorManger>();
+        if(door != null)
+            noknoking = StartCoroutine("TryingToPass");
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        StopCoroutine(noknoking);
+    }
+    
+    
 }    

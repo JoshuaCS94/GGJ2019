@@ -71,5 +71,9 @@ public class DoorManger : MonoBehaviour
         }
         GetComponent<SpriteRenderer>().sprite = broken;
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+    }
 }
