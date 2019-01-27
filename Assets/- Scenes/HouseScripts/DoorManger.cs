@@ -36,10 +36,10 @@ public class DoorManger : MonoBehaviour
     public void NokNok()
     {
         noknok_count--;
-        if (noknok_count == 0)
+        if (noknok_count <= 0)
         {
             open = true;
-            noknok_count = max_noknok;
+            Break();
         }
     }
 
@@ -55,6 +55,7 @@ public class DoorManger : MonoBehaviour
         {
             transform.DOMoveX(3.375f, 0.2f);
         }
+        noknok_count = max_noknok;
         GetComponent<SpriteRenderer>().sprite = close;
     }
 
@@ -71,5 +72,9 @@ public class DoorManger : MonoBehaviour
         }
         GetComponent<SpriteRenderer>().sprite = broken;
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+    }
 }
