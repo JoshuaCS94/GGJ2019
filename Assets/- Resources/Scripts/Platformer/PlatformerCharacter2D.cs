@@ -45,8 +45,9 @@ namespace UnityStandardAssets._2D
 
         public Animator anim; // Reference to the player's animator component.
 
-        private Rigidbody2D body;
-        private bool facingRight = true;
+        public Rigidbody2D body;
+        [HideInInspector]
+        public bool facingRight = true;
 
         private bool wallSliding;
         private bool pendingAirControl;
