@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Tweener movement_tweener;
     public bool released = false;
     public bool releasing = false;
-    
+    //public Animator graphics;
     public void ReleaseEnemy(bool dir = true)
     {
         releasing = true;
