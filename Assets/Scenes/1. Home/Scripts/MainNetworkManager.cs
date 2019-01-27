@@ -30,7 +30,11 @@ public class MainNetworkManager : NetworkManager
 
     public override void OnClientSceneChanged(NetworkConnection conn)
     {
-        SceneManager.LoadScene("Client", LoadSceneMode.Additive);
+        #if UNITY_STANDALONE
+        SceneManager.LoadScene("Client - Desktop", LoadSceneMode.Additive);
+        #elif UNITY_ANDROID
+		SceneManager.LoadScene("Client - Android", LoadSceneMode.Additive);
+		#endif
 
 //        // TODO: This must not be loaded on a Host
 //        SceneManager.LoadScene("Battlefield 1", LoadSceneMode.Additive);

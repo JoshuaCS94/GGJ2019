@@ -4,19 +4,14 @@ using UnityEngine.Networking.NetworkSystem;
 
 public class GameManager_Client : MonoBehaviour
 {
-	private IControlHandler m_controlHandler;
+	public IControlHandler m_controlHandler;
 	private NetworkManager m_networkManager;
 
 	// Use this for initialization
 	private void Start ()
 	{
 		m_networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
-
-		#if UNITY_STANDALONE
-		m_controlHandler = gameObject.AddComponent<ControlHandler_Standalone>();
-		#elif UNITY_ANDROID
-		m_controlHandler = gameObject.AddComponent<ControlHandler_Android>();
-		#endif
+		m_controlHandler = GetComponent<IControlHandler>();
 	}
 
 	// Update is called once per frame
