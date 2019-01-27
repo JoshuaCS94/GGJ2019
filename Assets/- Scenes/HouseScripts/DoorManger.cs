@@ -49,11 +49,11 @@ public class DoorManger : MonoBehaviour
         col.enabled = true;
         if (reverse)
         {
-            transform.DOMoveX(-6.75f, 0.2f);
+            transform.DOMoveX(-3.375f, 0.2f);
         }
         else
         {
-            transform.DOMoveX(6.75f, 0.2f);
+            transform.DOMoveX(3.375f, 0.2f);
         }
         GetComponent<SpriteRenderer>().sprite = close;
     }
@@ -63,11 +63,11 @@ public class DoorManger : MonoBehaviour
         col.enabled = false;
         if (reverse)
         {
-            transform.DOMoveX(6.25f, 0.2f);
+            transform.DOMoveX(3.125f, 0.2f);
         }
         else
         {
-            transform.DOMoveX(-6.25f, 0.2f);
+            transform.DOMoveX(-3.125f, 0.2f);
         }
         GetComponent<SpriteRenderer>().sprite = broken;
     }
