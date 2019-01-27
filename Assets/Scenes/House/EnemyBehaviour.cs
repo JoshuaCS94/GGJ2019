@@ -12,6 +12,8 @@ public class EnemyBehaviour : MonoBehaviour
     public int hit_points = 3;
     
     static System.Random rnd = new System.Random();
+    LevelManager manager;
+
     
     [HideInInspector]
     public bool direction = false;
@@ -19,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Tweener movement_tweener;
     public bool released = false;
 
-    public void ReleaseEnemy(bool dir)
+    public void ReleaseEnemy(bool dir = true)
     {
         if (dir)
         {
@@ -37,8 +39,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine("StartMovement");
-        //movement_tweener = transform.DOMoveX(transform.position.x + move_factor, 2);
+        manager = FindObjectOfType<LevelManager>();
     }
     
     
@@ -80,7 +81,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (hit_points <= 0)
         {
-            //TODO: alertar al level manager
+            manager.EnemyDead();
             Destroy(gameObject,0.1f);
         }
     }
