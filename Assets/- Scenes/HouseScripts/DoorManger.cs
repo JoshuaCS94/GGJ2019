@@ -12,11 +12,20 @@ public class DoorManger : MonoBehaviour
 
     public Sprite close;
     public Sprite broken;
+
+    private CircleCollider2D col2;
+    
+    public bool is_Touching => col2.IsTouchingLayers(LayerMask.NameToLayer("Player"));
     
     private SpriteRenderer image;
 
     private BoxCollider2D col;
-    
+
+    private void Awake()
+    {
+        col2 = GetComponent<CircleCollider2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +39,8 @@ public class DoorManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (is_Touching)
+            noknok_count = max_noknok;
     }
 
     public void NokNok()
@@ -75,6 +85,8 @@ public class DoorManger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if(other.GetComponent<Mother>() != null)
+            Fix();
+            
     }
 }

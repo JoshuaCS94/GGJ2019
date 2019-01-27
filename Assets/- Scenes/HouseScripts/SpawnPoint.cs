@@ -8,7 +8,7 @@ public class SpawnPoint : MonoBehaviour
 
     public bool direction;
     
-    public void Spawn()
+    public virtual void Spawn()
     {
         System.Random rnd = new System.Random();
         var enemy = enemys[rnd.Next(enemys.Count)];
