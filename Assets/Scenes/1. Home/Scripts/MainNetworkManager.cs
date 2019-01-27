@@ -23,15 +23,13 @@ public class MainNetworkManager : NetworkManager
 
     public override void OnServerSceneChanged(string sceneName)
     {
-        Debug.Log("Tamos");
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
-//        SceneManager.LoadScene("Battlefield 1", LoadSceneMode.Additive);
     }
 
     public override void OnClientSceneChanged(NetworkConnection conn)
     {
         #if UNITY_STANDALONE
-        SceneManager.LoadScene("Client - Desktop", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Client - Android", LoadSceneMode.Additive);
         #elif UNITY_ANDROID
 		SceneManager.LoadScene("Client - Android", LoadSceneMode.Additive);
 		#endif
@@ -56,7 +54,6 @@ public class MainNetworkManager : NetworkManager
         {
             prefabId = m_currentPrefabId
         });
-        Debug.Log("Tamos aqui!!");
     }
 
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId,
