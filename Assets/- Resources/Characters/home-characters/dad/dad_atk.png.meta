@@ -106,16 +106,16 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40
+        width: 48
         height: 32
-      alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7599cbea163385941b77c66fda39b86a
+      spriteID: c95f583454d370e4c9d095743eedc9ea
       vertices: []
       indices: 
       edges: []
@@ -124,18 +124,18 @@ TextureImporter:
       name: dad_atk_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 48
         y: 0
-        width: 40
+        width: 48
         height: 32
-      alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dd33b71cdcb4944b9d34d390fab9501
+      spriteID: f6604d8b70c375e4d9a1460d164914e0
       vertices: []
       indices: 
       edges: []
@@ -144,18 +144,18 @@ TextureImporter:
       name: dad_atk_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 0
-        width: 40
+        width: 48
         height: 32
-      alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc0a26e0377a4764f943ba30c3e48dad
+      spriteID: 7acfd5df551cb78439331a5f40ef23ec
       vertices: []
       indices: 
       edges: []
@@ -164,18 +164,18 @@ TextureImporter:
       name: dad_atk_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 144
         y: 0
-        width: 40
+        width: 48
         height: 32
-      alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bc685a182eb7dd4ca198d570d85d8a9
+      spriteID: 38ba552915800d34b85787b3ac64db27
       vertices: []
       indices: 
       edges: []
@@ -184,38 +184,18 @@ TextureImporter:
       name: dad_atk_4
       rect:
         serializedVersion: 2
-        x: 160
+        x: 192
         y: 0
-        width: 40
+        width: 48
         height: 32
-      alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89918279dc72c37478549b3cf85800e1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dad_atk_5
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.35, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c35e633fa6a918e4e850895a4616a0a0
+      spriteID: d7cafabe3b084494e89ac9de3b0466f6
       vertices: []
       indices: 
       edges: []
