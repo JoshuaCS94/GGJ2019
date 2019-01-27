@@ -102,7 +102,6 @@ public class EnemyBehaviour : MonoBehaviour
                 bool step = possibilities[rnd.Next(possibilities.Count)];
                 direction = step;
             }
-            print(direction);
             if (direction)
             {
                 //movement_tweener = transform.DOMoveX(transform.position.x + move_factor, speed);
@@ -163,16 +162,22 @@ public class EnemyBehaviour : MonoBehaviour
     
     public void YouAreIn()
     {
+        print("In");
         if(inside)
             return;
+        print("indind");
+        inside = true;
         manager.enemy_count++;
         StopCoroutine(destruction);
     }
 
     public void YouAreOut()
     {
+        print("Out");
+
         if (inside)
         {
+            print("deadd");
             inside = false;
             manager.EnemyDead();
             Destroy(gameObject,0.1f);
@@ -181,16 +186,24 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        door = other.GetComponent<DoorManger>();
-        if(door != null)
+        var p_door = other.GetComponent<DoorManger>();
+        if (p_door != null)
+        {
+            if (noknoking != null)
+                StopCoroutine(noknoking);
+            door = p_door;
+
             noknoking = StartCoroutine("TryingToPass");
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        door = other.GetComponent<DoorManger>();
-        if(door != null)
-            StopCoroutine(noknoking);
+        var p_door = other.GetComponent<DoorManger>();
+        if (p_door != null)
+            door = p_door;
+            if(noknoking != null)
+                StopCoroutine(noknoking);
     }
     
     

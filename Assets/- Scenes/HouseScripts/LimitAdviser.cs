@@ -17,7 +17,7 @@ public class LimitAdviser : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         EnemyBehaviour enemy = other.GetComponent<EnemyBehaviour>();
         if (enemy != null)
