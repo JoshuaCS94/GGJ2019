@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: d213543ddb6659e4a82037829976153c
+guid: b99deba831be2324e9fea9c15fceb6af
 TextureImporter:
   fileIDToRecycleName:
-    21300000: broken dor_0
-    21300002: broken dor_1
-    21300004: broken dor_2
+    21300000: dad_atk_0
+    21300002: dad_atk_1
+    21300004: dad_atk_2
+    21300006: dad_atk_3
+    21300008: dad_atk_4
+    21300010: dad_atk_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -48,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -98,61 +101,121 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: broken dor_0
+      name: dad_atk_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
+        width: 40
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11c34181f70b3d14192f6e1e491747d5
+      spriteID: 7599cbea163385941b77c66fda39b86a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: broken dor_1
+      name: dad_atk_1
       rect:
         serializedVersion: 2
-        x: 8
+        x: 40
         y: 0
-        width: 24
+        width: 40
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e5502fc87771ac4aa7366efa20c2642
+      spriteID: 6dd33b71cdcb4944b9d34d390fab9501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: broken dor_2
+      name: dad_atk_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 80
         y: 0
-        width: 24
+        width: 40
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86bda6ef91b25d84084a60693587b6f7
+      spriteID: dc0a26e0377a4764f943ba30c3e48dad
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dad_atk_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc685a182eb7dd4ca198d570d85d8a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dad_atk_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89918279dc72c37478549b3cf85800e1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dad_atk_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c35e633fa6a918e4e850895a4616a0a0
       vertices: []
       indices: 
       edges: []
@@ -160,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ffb824eaf49895a46932b79ebbbfd9e7
+    spriteID: 753b94e967e9d374ab1407e7821112eb
     vertices: []
     indices: 
     edges: []
